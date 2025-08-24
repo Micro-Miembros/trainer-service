@@ -17,9 +17,9 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Crear algunos entrenadores de ejemplo
-        Entrenador entrenador1 = new Entrenador(1L, "Juan", "Pérez", false);
-        Entrenador entrenador2 = new Entrenador(2L, "María", "Gómez", false);
-        Entrenador entrenador3 = new Entrenador(3L, "Carlos", "López", false);
+        Entrenador entrenador1 = new Entrenador(1L, "Juan Perez", "Cardio", false);
+        Entrenador entrenador2 = new Entrenador(2L, "María Juana", "Pesas", false);
+        Entrenador entrenador3 = new Entrenador(3L, "Carlos Lopez", "CrossFit", false);
 
         // Guardar los entrenadores en la base de datos
         entrenadorRepository.saveAll(Arrays.asList(entrenador1, entrenador2, entrenador3));

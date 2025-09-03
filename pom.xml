@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.analisys</groupId>
-	<artifactId>trainerservice</artifactId>
+	<artifactId>trainer-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>trainerservice</name>
+	<name>trainer-service</name>
 	<description>Microservicio Trainer</description>
 	<url/>
 	<licenses>

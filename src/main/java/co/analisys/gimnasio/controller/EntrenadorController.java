@@ -1,6 +1,7 @@
 package co.analisys.gimnasio.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import co.analisys.gimnasio.model.Entrenador;
@@ -26,6 +27,7 @@ public class EntrenadorController {
     })
     @Operation(summary = "Crear nuevo entrenador", description = "Permite crear un nuevo entrenador en el gimnasio")
     @PostMapping("/entrenadores")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void crearEntrenador(@RequestBody Entrenador entrenador) {
         entrenadorService.guardarEntrenador(entrenador);
     }
@@ -39,6 +41,7 @@ public class EntrenadorController {
     })
     @Operation(summary = "Obtener todos los entrenadores", description = "Permite obtener la lista de todos los entrenadores del gimnasio")
     @GetMapping("/entrenadores")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER', 'ROLE_MEMBER')")
     public List<Entrenador> obtenerTodosLosEntrenadores() {
         return entrenadorService.obtenerTodosLosEntrenadores();
     }
@@ -52,6 +55,7 @@ public class EntrenadorController {
     })
     @Operation(summary = "Reservar entrenador", description = "Permite reservar un entrenador específico")
     @PostMapping("/entrenadores/{id}/reservar")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public boolean reservarEntrenador(@PathVariable Long id) {
         return entrenadorService.reservarEntrenador(id);
     }
@@ -65,6 +69,7 @@ public class EntrenadorController {
     })
     @Operation(summary = "Cancelar reserva de entrenador", description = "Permite cancelar la reserva de un entrenador específico")
     @PostMapping("/entrenadores/{id}/cancelar")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public boolean cancelarReservaEntrenador(@PathVariable Long id) {
         return entrenadorService.cancelarReservaEntrenador(id);
     }
